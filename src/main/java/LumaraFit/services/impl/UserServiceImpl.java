@@ -1,6 +1,6 @@
 package LumaraFit.services.impl;
 
-import LumaraFit.models.User;
+import LumaraFit.models.Usuario;
 import LumaraFit.repositories.UserRepository;
 import LumaraFit.services.interfaz.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class UserServiceImpl implements IUserService {
     private UserRepository userRepository;
 
     @Override
-    public User registerUser(User user) {
+    public Usuario registerUser(Usuario user) {
         // Verificamos si el email ya existe en la base de datos
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new RuntimeException("Error: Email is already in use!");
@@ -33,12 +33,12 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public Optional<User> findByEmail(String email) {
+    public Optional<Usuario> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
 
     @Override
-    public User updateUser(String id, User userDetails) {
+    public Usuario updateUser(String id, Usuario userDetails) {
         return userRepository.findById(id).map(user -> {
             user.setFirstName(userDetails.getFirstName());
             user.setLastName(userDetails.getLastName());
@@ -49,7 +49,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<User> getAllStudents() {
+    public List<Usuario> getAllStudents() {
         return userRepository.findAll();
     }
 

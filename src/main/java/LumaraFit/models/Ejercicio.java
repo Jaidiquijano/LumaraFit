@@ -6,13 +6,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Data
-@Document(collection = "exercise")
-public class Exercise {
+@Document(collection = "ejercicios")
+public class Ejercicio {
     @Id
     private String id;
-    private String name;
-    private String description;
-    private String muscleGroup;
+    private String nombre;
+    private String descripcion;
+    private String grupoMuscular;
     private String videoUrl;
-    private String difficultyLevel;
+    private String nivelDificultad;
 }

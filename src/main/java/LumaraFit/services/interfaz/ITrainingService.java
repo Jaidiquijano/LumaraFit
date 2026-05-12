@@ -1,16 +1,16 @@
 package LumaraFit.services.interfaz;
 
-import LumaraFit.models.Exercise;
-import LumaraFit.models.PhysicalProfile;
+import LumaraFit.models.Ejercicio;
+import LumaraFit.models.PerfilFisico;
 
 import java.util.List;
 
 public interface ITrainingService {
-    PhysicalProfile savePhysicalAssessment(PhysicalProfile profile);
+    PerfilFisico savePhysicalAssessment(PerfilFisico profile);
 
     // Obtiene el historial de progresos de un alumno
-    List<PhysicalProfile> getUserProgressHistory(String userId);
+    List<PerfilFisico> getUserProgressHistory(String userId);
 
     // Sugiere ejercicios basados en el somatotipo actual
-    List<Exercise> getRecommendedExercises(String somatotype);
+    List<Ejercicio> getRecommendedExercises(String somatotype);
 }

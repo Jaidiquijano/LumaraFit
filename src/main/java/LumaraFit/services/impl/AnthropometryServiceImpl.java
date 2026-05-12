@@ -1,6 +1,6 @@
 package LumaraFit.services.impl;
 
-import LumaraFit.models.PhysicalProfile;
+import LumaraFit.models.PerfilFisico;
 import LumaraFit.services.interfaz.IAnthropometryService;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ public class AnthropometryServiceImpl implements IAnthropometryService {
 
 
     @Override
-    public PhysicalProfile processAssessment(PhysicalProfile profile) {
+    public PerfilFisico processAssessment(PerfilFisico profile) {
         // 1. Calculamos los 3 componentes (Heath-Carter)
         double[] scores = calculateHeathCarterScores(
                 profile.getWeight(),

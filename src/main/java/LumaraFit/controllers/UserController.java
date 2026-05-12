@@ -1,6 +1,6 @@
 package LumaraFit.controllers;
 
-import LumaraFit.models.User;
+import LumaraFit.models.Usuario;
 import LumaraFit.services.interfaz.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,17 +17,17 @@ public class UserController {
     private IUserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) {
+    public ResponseEntity<Usuario> register(@RequestBody Usuario user) {
         return ResponseEntity.ok(userService.registerUser(user));
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> getAll() {
+    public ResponseEntity<List<Usuario>> getAll() {
         return ResponseEntity.ok(userService.getAllStudents());
     }
 
     @GetMapping("/email/{email}")
-    public ResponseEntity<User> getByEmail(@PathVariable String email) {
+    public ResponseEntity<Usuario> getByEmail(@PathVariable String email) {
         return userService.findByEmail(email)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

@@ -1,10 +1,10 @@
 package LumaraFit.services.interfaz;
 
-import LumaraFit.models.PhysicalProfile;
+import LumaraFit.models.PerfilFisico;
 
 public interface IAnthropometryService {
     // Procesa las medidas y devuelve el perfil con el somatotipo asignado
-    PhysicalProfile processAssessment(PhysicalProfile profile);
+    PerfilFisico processAssessment(PerfilFisico profile);
 
     // Calcula los puntos específicos de la fórmula Heath-Carter
     double[] calculateHeathCarterScores(double weight, double height, double fatPercentage);

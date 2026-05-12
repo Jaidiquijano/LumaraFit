@@ -1,14 +1,14 @@
 package LumaraFit.repositories;
 
-import LumaraFit.models.Exercise;
+import LumaraFit.models.Ejercicio;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface ExerciseRepository extends MongoRepository<Exercise,String> {
+public interface ExerciseRepository extends MongoRepository<Ejercicio,String> {
     // Filtra ejercicios por grupo muscular (ej. "Chest", "Legs")
-    List<Exercise> findByMuscleGroup(String muscleGroup);
+    List<Ejercicio> findByMuscleGroup(String muscleGroup);
 
     // Filtra por nivel de dificultad
-    List<Exercise> findByDifficultyLevel(String difficultyLevel);
+    List<Ejercicio> findByDifficultyLevel(String difficultyLevel);
 }

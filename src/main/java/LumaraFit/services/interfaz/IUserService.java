@@ -1,14 +1,14 @@
 package LumaraFit.services.interfaz;
 
-import LumaraFit.models.User;
+import LumaraFit.models.Usuario;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IUserService {
-    User registerUser(User user);
-    Optional<User> findByEmail(String email);
-    User updateUser(String id, User user);
-    List<User> getAllStudents();
+    Usuario registerUser(Usuario user);
+    Optional<Usuario> findByEmail(String email);
+    Usuario updateUser(String id, Usuario user);
+    List<Usuario> getAllStudents();
     void deleteUser(String id);
 }
