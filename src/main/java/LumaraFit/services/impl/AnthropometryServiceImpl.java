@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AnthropometryServiceImpl implements IAnthropometryService {
 
+
     @Override
     public PhysicalProfile processAssessment(PhysicalProfile profile) {
         // 1. Calculamos los 3 componentes (Heath-Carter)

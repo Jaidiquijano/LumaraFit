@@ -1,6 +1,6 @@
 package LumaraFit.models;
-
 import lombok.Data;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -23,5 +23,6 @@ public class PhysicalProfile {
     // Somatotype Result
     private String somatotype; // ECTOMORPH, MESOMORPH, ENDOMORPH
     private double[] carterScore;
+
     private LocalDateTime assessmentDate;
 }
