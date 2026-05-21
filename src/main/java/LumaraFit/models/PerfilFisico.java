@@ -16,10 +16,6 @@ public class PerfilFisico {
     // Antropometría
     private double peso;
     private double altura;
-    private double porcentajeGrasaCorporal;
-    private double circunferenciaBrazo;
-    private double circunferenciaCintura;
-
     private String somatotipo; // ECTOMORFO, MESOMORFO, ENDOMORFO
     private double[] puntuacionCarter;
     private LocalDateTime fechaEvaluacion = LocalDateTime.now();

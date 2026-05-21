@@ -10,9 +10,6 @@ public class PerfilFisicoMapper {
         perfil.setUsuarioId(request.usuarioId());
         perfil.setPeso(request.peso());
         perfil.setAltura(request.altura());
-        perfil.setPorcentajeGrasaCorporal(request.porcentajeGrasaCorporal());
-        perfil.setCircunferenciaBrazo(request.circunferenciaBrazo());
-        perfil.setCircunferenciaCintura(request.circunferenciaCintura());
         return perfil;
     }
 
@@ -22,9 +19,6 @@ public class PerfilFisicoMapper {
                 perfil.getUsuarioId(),
                 perfil.getPeso(),
                 perfil.getAltura(),
-                perfil.getPorcentajeGrasaCorporal(),
-                perfil.getCircunferenciaBrazo(),
-                perfil.getCircunferenciaCintura(),
                 perfil.getSomatotipo(),
                 perfil.getPuntuacionCarter(),
                 perfil.getFechaEvaluacion()

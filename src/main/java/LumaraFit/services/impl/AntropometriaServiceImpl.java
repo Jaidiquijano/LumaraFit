@@ -12,8 +12,7 @@ public class AntropometriaServiceImpl implements IAntropometriaService {
 
         double[] puntuaciones = calcularPuntuacionesHeathCarter(
                 perfil.getPeso(),
-                perfil.getAltura(),
-                perfil.getPorcentajeGrasaCorporal()
+                perfil.getAltura()
         );
         perfil.setPuntuacionCarter(puntuaciones);
         String categoria = determinarCategoriaSomatotipo(puntuaciones);
@@ -23,26 +22,29 @@ public class AntropometriaServiceImpl implements IAntropometriaService {
     }
 
     @Override
-    public double[] calcularPuntuacionesHeathCarter(double peso, double altura, double porcentajeGrasa) {
+    public double[] calcularPuntuacionesHeathCarter(double peso, double altura) {
         double[] puntuaciones = new double[3];
-
-        // --- 1. ENDOMORFIA ---
-        puntuaciones[0] = (porcentajeGrasa * 0.145) - 0.5;
-
-        // --- 2. MESOMORFIA ---
         double alturaEnMetros = altura / 100;
-        puntuaciones[1] = (0.85 * (peso / altura)) + 4.0;
+        double imc = peso / (alturaEnMetros * alturaEnMetros);
+        double hwr = altura / Math.pow(peso, 1.0 / 3.0);
 
-        // --- 3. ECTOMORFIA ---
-        // Se usa el Índice Ponderal (HWR)
-        double hwr = altura / Math.pow(peso, 1.0/3.0);
+
+        puntuaciones[0] = 0.0025 * Math.pow(imc, 2.2);
+        if (puntuaciones[0] < 0.5) puntuaciones[0] = 0.5;
+
+        puntuaciones[1] = (0.32 * imc) - 2.5;
+        if (puntuaciones[1] < 0.5) puntuaciones[1] = 0.5;
 
         if (hwr >= 40.75) {
             puntuaciones[2] = (0.732 * hwr) - 28.58;
         } else if (hwr > 38.25) {
             puntuaciones[2] = (0.463 * hwr) - 17.63;
         } else {
-            puntuaciones[2] = 0.1; // Valor mínimo
+            puntuaciones[2] = 0.1;
+        }
+
+        if (imc >= 28.0 && puntuaciones[0] <= puntuaciones[1]) {
+            puntuaciones[0] = puntuaciones[1] + 1.5;
         }
 
         for (int i = 0; i < 3; i++) {
@@ -58,13 +60,15 @@ public class AntropometriaServiceImpl implements IAntropometriaService {
         double meso = puntuaciones[1];
         double ecto = puntuaciones[2];
 
-        // Lógica para determinar el componente dominante
-        if (endo > meso && endo > ecto) {
+        double maximo = Math.max(endo, Math.max(meso, ecto));
+
+        if (maximo == endo) {
             return "ENDOMORFO";
-        } else if (meso > endo && meso > ecto) {
+        } else if (maximo == meso) {
             return "MESOMORFO";
         } else {
             return "ECTOMORFO";
         }
     }
+
 }

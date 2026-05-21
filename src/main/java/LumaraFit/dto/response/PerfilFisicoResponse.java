@@ -7,9 +7,6 @@ public record PerfilFisicoResponse(
         String usuarioId,
         double peso,
         double altura,
-        double porcentajeGrasaCorporal,
-        double circunferenciaBrazo,
-        double circunferenciaCintura,
         String somatotipo,
         double[] puntuacionCarter,
         LocalDateTime fechaEvaluacion
