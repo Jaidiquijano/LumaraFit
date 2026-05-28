@@ -22,13 +22,10 @@ public class EntrenamientoServiceImpl implements IEntrenamientoService {
 
     @Autowired
     private PerfilFisicoRepository perfilRepository;
-
     @Autowired
     private EjercicioRepository ejercicioRepository;
-
     @Autowired
     private IAntropometriaService antropometriaService;
-
     @Override
     public PerfilFisicoResponse guardarEvaluacionFisica(PerfilFisicoRequest datosPerfil) {
 
@@ -38,7 +35,6 @@ public class EntrenamientoServiceImpl implements IEntrenamientoService {
         PerfilFisico guardado = perfilRepository.save(perfil);
         return PerfilFisicoMapper.toResponse(guardado);
     }
-
     @Override
     public List<PerfilFisicoResponse> obtenerHistorialProgreso(String usuarioId) {
 
@@ -46,11 +42,9 @@ public class EntrenamientoServiceImpl implements IEntrenamientoService {
                 .map(PerfilFisicoMapper::toResponse)
                 .collect(Collectors.toList());
     }
-
     @Override
     public List<EjercicioResponse> obtenerEjerciciosRecomendados(String somatotipo) {
         List<Ejercicio> ejercicios;
-
 
         if ("ECTOMORFO".equalsIgnoreCase(somatotipo)) {
             ejercicios = ejercicioRepository.findByNivelDificultad("ALTA");
@@ -59,8 +53,6 @@ public class EntrenamientoServiceImpl implements IEntrenamientoService {
         } else {
             ejercicios = ejercicioRepository.findAll();
         }
-
-
         return ejercicios.stream()
                 .map(EjercicioMapper::toResponse)
                 .collect(Collectors.toList());

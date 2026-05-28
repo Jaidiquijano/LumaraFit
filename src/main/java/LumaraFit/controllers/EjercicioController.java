@@ -20,7 +20,6 @@ public class EjercicioController {
     @Autowired
     private EjercicioRepository ejercicioRepository;
 
-    // Obtener todos los ejercicios del catálogo
     @GetMapping
     public ResponseEntity<List<EjercicioResponse>> obtenerTodos() {
         List<EjercicioResponse> ejercicios = ejercicioRepository.findAll().stream()
@@ -29,7 +28,6 @@ public class EjercicioController {
         return ResponseEntity.ok(ejercicios);
     }
 
-    // Crear un nuevo ejercicio (útil para el panel de administrador/profesor)
     @PostMapping
     public ResponseEntity<EjercicioResponse> crear(@RequestBody EjercicioRequest datos) {
         Ejercicio ejercicio = EjercicioMapper.toEntity(datos);
@@ -37,7 +35,6 @@ public class EjercicioController {
         return ResponseEntity.ok(EjercicioMapper.toResponse(guardado));
     }
 
-    // Buscar ejercicios por grupo muscular (ej: "Pecho", "Piernas")
     @GetMapping("/musculo/{grupo}")
     public ResponseEntity<List<EjercicioResponse>> obtenerPorMusculo(@PathVariable String grupo) {
         List<EjercicioResponse> ejercicios = ejercicioRepository.findByGrupoMuscular(grupo).stream()
